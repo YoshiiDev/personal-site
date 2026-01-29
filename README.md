@@ -4,7 +4,7 @@ This repository contains the source code for my personal website and portfolio.
 
 The site is designed to present my work, skills, and experience as a **Web Developer & Technical Support Specialist**, with a focus on real-world projects, usability, reliability, and support-minded engineering.
 
-🌐 **Live Site:** https://rodnnygarcia.vercel.app  
+🌐 **Live Site:** https://rodnny.vercel.app  
 📍 **Status:** Actively maintained
 
 ---
