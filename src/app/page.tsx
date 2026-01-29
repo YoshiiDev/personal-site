@@ -1,5 +1,6 @@
 import { siteData } from "@/lib/siteData";
 import Image from "next/image";
+import ActiveSectionNav from "@/components/ActiveSectionNav";
 
 function CertificationIcon({
   name,
@@ -64,8 +65,8 @@ function ProjectLinks({ links }: { links: { label: string; href: string }[] }) {
 
         const className =
           link.label.toLowerCase().includes("live")
-            ? "inline-flex h-10 items-center justify-center rounded-lg bg-white px-4 text-sm font-semibold text-black transition hover:bg-zinc-200"
-            : "inline-flex h-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 text-sm font-semibold text-white transition hover:bg-white/10";
+            ? "inline-flex h-10 items-center justify-center rounded-lg bg-sky-500 px-4 text-sm font-semibold text-white transition duration-200 hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+            : "inline-flex h-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 text-sm font-semibold text-white transition duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
         return (
           <a
@@ -103,23 +104,19 @@ export default function Home() {
           <a href="#top" className="text-sm font-semibold tracking-tight text-white">
             {siteData.name}
           </a>
-          <nav className="flex items-center gap-5 text-sm text-zinc-300">
-            <a className="transition hover:text-white" href="#projects">
-              Projects
-            </a>
-            <a className="hidden transition hover:text-white sm:inline" href="#skills">
-              Skills
-            </a>
-            <a
-              className="hidden transition hover:text-white sm:inline"
-              href="#certifications"
-            >
-              Certifications
-            </a>
-            <a className="transition hover:text-white" href="#contact">
-              Contact
-            </a>
-          </nav>
+          <ActiveSectionNav
+            className="flex items-center gap-5 text-sm"
+            items={[
+              { label: "Projects", href: "#projects" },
+              { label: "Skills", href: "#skills", className: "hidden sm:inline" },
+              {
+                label: "Certifications",
+                href: "#certifications",
+                className: "hidden sm:inline",
+              },
+              { label: "Contact", href: "#contact" },
+            ]}
+          />
         </div>
       </header>
 
@@ -130,7 +127,7 @@ export default function Home() {
               <p className="text-sm font-medium text-zinc-300">
                 {siteData.title}
               </p>
-              <div className="mt-3 flex items-center gap-4">
+              <div className="mt-4 flex items-center gap-4">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white/5 md:h-14 md:w-14">
                   <Image
                     src={siteData.profile.imageSrc}
@@ -142,24 +139,24 @@ export default function Home() {
                     priority
                   />
                 </div>
-                <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
+                <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white md:text-7xl">
                   {siteData.name}
                 </h1>
               </div>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-200">
+              <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-zinc-200/80">
                 {siteData.tagline}
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href="#projects"
-                  className="inline-flex h-11 items-center justify-center rounded-lg bg-white px-5 text-sm font-semibold text-black transition hover:bg-zinc-200"
+                  className="inline-flex h-11 items-center justify-center rounded-lg bg-sky-500 px-5 text-sm font-semibold text-white transition duration-200 hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 >
                   View Projects
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
+                  className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 >
                   Contact
                 </a>
@@ -167,7 +164,7 @@ export default function Home() {
                   href={siteData.resume.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
+                  className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 >
                   {siteData.resume.label}
                 </a>
@@ -183,15 +180,14 @@ export default function Home() {
                   Focus
                 </p>
                 <div className="mt-4 grid gap-3 text-sm text-zinc-200">
-                  <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-                    Web platforms used by real communities
-                  </div>
-                  <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-                    Automation that reduces support load
-                  </div>
-                  <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-                    Reliability, usability, and clear communication
-                  </div>
+                  {siteData.focusItems.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-lg border border-white/10 bg-white/5 px-3 py-2"
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -213,23 +209,23 @@ export default function Home() {
               <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
                 {siteData.techBanner.title}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+              <p className="mt-3 max-w-[65ch] text-sm leading-relaxed text-zinc-300">
                 {siteData.techBanner.subtitle}
               </p>
             </div>
 
             <div className="md:col-span-8">
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-5 sm:grid-cols-2">
                 {siteData.techBanner.groups.map((group) => (
                   <div
                     key={group.title}
-                    className="rounded-2xl border border-white/10 bg-black/30 p-5"
+                    className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20 transition duration-200 hover:-translate-y-0.5 hover:border-white/20"
                   >
                     <div className="text-sm font-semibold text-white">
                       {group.title}
                     </div>
                     {group.description ? (
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+                      <p className="mt-2 max-w-[65ch] text-sm leading-relaxed text-zinc-300">
                         {group.description}
                       </p>
                     ) : null}
@@ -238,7 +234,7 @@ export default function Home() {
                         {group.items.map((t) => (
                           <span
                             key={`${group.title}-${t}`}
-                            className="whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-200"
+                            className="whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] leading-none text-zinc-200"
                           >
                             {t}
                           </span>
@@ -263,7 +259,7 @@ export default function Home() {
               <h2 className="text-2xl font-semibold tracking-tight text-white">
                 A developer who builds and supports.
               </h2>
-              <div className="mt-5 space-y-4 text-base leading-relaxed text-zinc-200">
+              <div className="mt-5 max-w-[70ch] space-y-4 text-base leading-relaxed text-zinc-200">
                 {siteData.aboutParagraphs.map((p) => (
                   <p key={p}>{p}</p>
                 ))}
@@ -285,7 +281,7 @@ export default function Home() {
             </div>
 
             <div className="grid gap-6 md:col-span-8">
-              <article className="rounded-2xl border border-white/10 bg-black/30 p-6">
+              <article className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20 transition duration-200 hover:-translate-y-0.5 hover:border-white/20">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-white">
@@ -294,7 +290,7 @@ export default function Home() {
                     <p className="mt-1 text-sm text-zinc-300">
                       Role: {siteData.projects[0].role}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-200">
+                    <p className="mt-3 max-w-[70ch] text-sm leading-relaxed text-zinc-200">
                       {siteData.projects[0].summary}
                     </p>
                   </div>
@@ -306,18 +302,18 @@ export default function Home() {
                   {siteData.projects[0].tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-200"
+                      className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] leading-none text-zinc-200"
                     >
                       {t}
                     </span>
                   ))}
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300">
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] leading-none text-zinc-300">
                     {siteData.projects[0].status ?? ""}
                   </span>
                 </div>
               </article>
 
-              <article className="rounded-2xl border border-white/10 bg-black/30 p-6">
+              <article className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20 transition duration-200 hover:-translate-y-0.5 hover:border-white/20">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-white">
@@ -326,7 +322,7 @@ export default function Home() {
                     <p className="mt-1 text-sm text-zinc-300">
                       Role: {siteData.projects[1].role}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-200">
+                    <p className="mt-3 max-w-[70ch] text-sm leading-relaxed text-zinc-200">
                       {siteData.projects[1].summary}
                     </p>
                   </div>
@@ -350,7 +346,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-6 md:col-span-8 md:grid-cols-2">
-              <div className="rounded-xl border border-white/10 bg-black/30 p-6">
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20 transition duration-200 hover:-translate-y-0.5 hover:border-white/20">
                 <h3 className="text-sm font-semibold text-white">Development</h3>
                 <div className="mt-4 grid gap-2 text-sm text-zinc-200">
                   {siteData.skills[0].items.map((s) => (
@@ -358,7 +354,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <div className="rounded-xl border border-white/10 bg-black/30 p-6">
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20 transition duration-200 hover:-translate-y-0.5 hover:border-white/20">
                 <h3 className="text-sm font-semibold text-white">
                   Automation & Platforms
                 </h3>
@@ -368,7 +364,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <div className="rounded-xl border border-white/10 bg-black/30 p-6 md:col-span-2">
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20 transition duration-200 hover:-translate-y-0.5 hover:border-white/20 md:col-span-2">
                 <h3 className="text-sm font-semibold text-white">
                   Support & Operations
                 </h3>
@@ -388,6 +384,9 @@ export default function Home() {
               <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
                 Certifications
               </p>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                {siteData.certificationsNote}
+              </p>
             </div>
             <div className="grid gap-3 md:col-span-8">
               {siteData.certifications.map((cert) => (
@@ -396,7 +395,7 @@ export default function Home() {
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-2xl border border-white/10 bg-black/30 p-6 transition hover:border-white/20"
+                  className="group rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20 transition duration-200 hover:-translate-y-0.5 hover:border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5">
@@ -444,16 +443,15 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-8">
-              <div className="rounded-2xl border border-white/10 bg-black/30 p-6">
-                <p className="text-sm leading-relaxed text-zinc-200">
-                  Send your preferred contact links (email, LinkedIn, GitHub) and I’ll
-                  wire them up so recruiters can reach you in one click.
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-sm shadow-black/20">
+                <p className="max-w-[70ch] text-sm leading-relaxed text-zinc-200">
+                  Choose how you’d like to connect — email, LinkedIn, or GitHub.
                 </p>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
                   <a
                     href={siteData.links.email}
-                    className="inline-flex h-11 items-center justify-center rounded-lg bg-white px-5 text-sm font-semibold text-black transition hover:bg-zinc-200"
+                    className="inline-flex h-11 items-center justify-center rounded-lg bg-sky-500 px-5 text-sm font-semibold text-white transition duration-200 hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   >
                     Email
                   </a>
@@ -461,7 +459,7 @@ export default function Home() {
                     href={siteData.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
+                    className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   >
                     LinkedIn
                   </a>
@@ -469,7 +467,7 @@ export default function Home() {
                     href={siteData.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
+                    className="inline-flex h-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 text-sm font-semibold text-white transition duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   >
                     GitHub
                   </a>
@@ -481,8 +479,10 @@ export default function Home() {
 
         <footer className="border-t border-white/10 py-10 text-xs text-zinc-500">
           <div className="flex flex-col justify-between gap-2 md:flex-row">
-            <span>{new Date().getFullYear()} {siteData.name}</span>
-            <span>{siteData.title}</span>
+            <span>
+              {new Date().getFullYear()} {siteData.name}
+            </span>
+            <span>{siteData.openToRemoteLine}</span>
           </div>
         </footer>
       </main>

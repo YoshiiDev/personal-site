@@ -30,6 +30,7 @@ export type SiteData = {
   title: string;
   tagline: string;
   description: string;
+  focusItems: string[];
   resume: {
     label: string;
     url: string;
@@ -58,15 +59,19 @@ export type SiteData = {
   projects: Project[];
   skills: SkillGroup[];
   certifications: Certification[];
+  certificationsNote: string;
 };
 
 export const siteData: SiteData = {
   name: "Rodnny Garcia",
   title: "Web Developer & Technical Support Specialist",
-  tagline:
-    "Building real-world web platforms, automation, and tools with a strong focus on usability, reliability, and user support.",
-  description:
-    "Building real-world web platforms, automation, and tools with a strong focus on usability, reliability, and user support.",
+  tagline: "I build reliable web platforms and automation with a support-first mindset.",
+  description: "I build reliable web platforms and automation with a support-first mindset.",
+  focusItems: [
+    "Supported a community of 2,000+ users",
+    "Automation that reduces support load",
+    "Reliability, usability, and clear communication",
+  ],
   resume: {
     label: "Resume",
     url: "/resume.pdf",
@@ -196,4 +201,5 @@ export const siteData: SiteData = {
       icon: "linkedin",
     },
   ],
+  certificationsNote: "Currently preparing for CompTIA A+.",
 };
