@@ -44,6 +44,45 @@ function CertificationIcon({
   );
 }
 
+function ProjectLinks({ links }: { links: { label: string; href: string }[] }) {
+  return (
+    <div className="flex w-full flex-col gap-2 sm:w-auto sm:min-w-[180px]">
+      {links.map((link) => {
+        const isDisabled = !link.href;
+        const isExternal = /^https?:\/\//i.test(link.href);
+
+        if (isDisabled) {
+          return (
+            <span
+              key={link.label}
+              className="inline-flex h-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 text-sm font-semibold text-zinc-300"
+            >
+              {link.label}
+            </span>
+          );
+        }
+
+        const className =
+          link.label.toLowerCase().includes("live")
+            ? "inline-flex h-10 items-center justify-center rounded-lg bg-white px-4 text-sm font-semibold text-black transition hover:bg-zinc-200"
+            : "inline-flex h-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 text-sm font-semibold text-white transition hover:bg-white/10";
+
+        return (
+          <a
+            key={link.label}
+            href={link.href}
+            className={className}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-[radial-gradient(900px_500px_at_10%_0%,rgba(71,85,105,0.18),transparent_60%),radial-gradient(900px_500px_at_100%_10%,rgba(30,58,138,0.14),transparent_55%)]">
@@ -260,20 +299,7 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="flex w-full flex-col gap-2 sm:w-auto sm:min-w-[180px]">
-                    <a
-                      href={siteData.projects[0].links[0]?.href ?? "#contact"}
-                      className="inline-flex h-10 items-center justify-center rounded-lg bg-white px-4 text-sm font-semibold text-black transition hover:bg-zinc-200"
-                    >
-                      {siteData.projects[0].links[0]?.label ?? "Live Site"}
-                    </a>
-                    <a
-                      href={siteData.projects[0].links[1]?.href ?? "#contact"}
-                      className="inline-flex h-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 text-sm font-semibold text-white transition hover:bg-white/10"
-                    >
-                      {siteData.projects[0].links[1]?.label ?? "GitHub"}
-                    </a>
-                  </div>
+                  <ProjectLinks links={siteData.projects[0].links} />
                 </div>
 
                 <div className="mt-5 flex flex-wrap gap-2">

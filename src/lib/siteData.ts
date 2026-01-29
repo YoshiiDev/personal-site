@@ -130,9 +130,9 @@ export const siteData: SiteData = {
     "I’m bilingual (English / Spanish) and open to remote opportunities in web development, technical support, and support-focused engineering roles.",
   ],
   links: {
-    email: "mailto:you@example.com",
-    linkedin: "https://www.linkedin.com/in/your-handle",
-    github: "https://github.com/your-handle",
+    email: "mailto:xxyoshiiprxx@proton.me",
+    linkedin: "https://www.linkedin.com/in/rodnnygarcia/",
+    github: "https://github.com/YoshiiDev",
   },
   projects: [
     {
@@ -144,7 +144,7 @@ export const siteData: SiteData = {
       tech: ["HTML", "CSS", "JavaScript", "Discord API", "Deployment"],
       links: [
         { label: "Live Site", href: "#" },
-        { label: "GitHub", href: "#" },
+        { label: "GitHub (Private)", href: "" },
       ],
     },
     {
@@ -186,14 +186,13 @@ export const siteData: SiteData = {
     {
       name: "Docker Foundations Professional Certificate",
       issuer: "Docker",
-      credentialId: "TBD",
-      credentialUrl: "#",
+      credentialUrl: "https://www.linkedin.com/learning/certificates/032c7601ddbd96c8f49b2a984063b9e8fcf3c445e1bcb052b6dcaeb1bad816cb",
       icon: "docker",
     },
     {
       name: "IT Support Learning Path (LinkedIn Learning)",
       issuer: "LinkedIn Learning",
-      credentialUrl: "#",
+      credentialUrl: "https://www.linkedin.com/learning/certificates/6491b2fcd98a5060a02b05c33c74752057a77069622fb94b1cfc2cf32ae25262",
       icon: "linkedin",
     },
   ],
